@@ -24,7 +24,7 @@ namespace OOLessons
             var chanceOf0Dot1 = new Chance(0.1);
             var chanceOf0Dot2 = new Chance(0.2);
 
-            chanceOf0Dot1.ShouldEqual(chanceOf0Dot2);
+            chanceOf0Dot1.ShouldNotEqual(chanceOf0Dot2);
         }
 
         [Test]
@@ -34,6 +34,15 @@ namespace OOLessons
             var anyObject = new object();
 
             chanceOf0Dot1.ShouldNotEqual(anyObject);
+        }
+
+        [Test]
+        public void chance_of_not_0dot1_should_equal_chance_of_0dot9()
+        {
+            var chanceOf0Dot1 = new Chance(0.1);
+            var chanceOf0Dot9 = new Chance(0.9);
+
+            chanceOf0Dot1.Not().ShouldEqual(chanceOf0Dot9);
         }
     }
 }

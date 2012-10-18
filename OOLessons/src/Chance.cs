@@ -9,6 +9,11 @@ namespace OOLessons.test
             this.possibility = possibility;
         }
 
+        public Chance Not()
+        {
+            return new Chance(1 - possibility);
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
