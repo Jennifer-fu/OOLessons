@@ -15,7 +15,7 @@ namespace OOLessons
             var chanceOf0Dot1 = new Chance(0.1);
             var anotherChanceOf0Dot1 = new Chance(0.1);
 
-            Assert.AreEqual(chanceOf0Dot1,anotherChanceOf0Dot1);
+            chanceOf0Dot1.ShouldEqual(anotherChanceOf0Dot1);
         }
 
         [Test]
@@ -24,15 +24,16 @@ namespace OOLessons
             var chanceOf0Dot1 = new Chance(0.1);
             var chanceOf0Dot2 = new Chance(0.2);
 
-            Assert.AreNotEqual(chanceOf0Dot1, chanceOf0Dot2);
+            chanceOf0Dot1.ShouldEqual(chanceOf0Dot2);
         }
 
         [Test]
         public void chance_of_0dot1_should_not_equal_any_object()
         {
             var chanceOf0Dot1 = new Chance(0.1);
+            var anyObject = new object();
 
-            Assert.AreNotEqual(chanceOf0Dot1, new Object());
+            chanceOf0Dot1.ShouldNotEqual(anyObject);
         }
     }
 }
