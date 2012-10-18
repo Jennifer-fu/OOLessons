@@ -44,5 +44,14 @@ namespace OOLessons
 
             chanceOf0Dot1.Not().ShouldEqual(chanceOf0Dot9);
         }
+
+        [Test]
+        public void chance_of_0dot1_and_chance_of_0dot1_should_equal_chance_of_0dot01()
+        {
+            var chanceOf0Dot1 = new Chance(0.1);
+            var chanceOf0Dot01 = new Chance(0.01);
+
+            chanceOf0Dot1.And(chanceOf0Dot1).ShouldEqual(chanceOf0Dot01);
+        }
     }
 }

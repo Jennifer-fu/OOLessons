@@ -14,13 +14,18 @@ namespace OOLessons.test
             return new Chance(1 - possibility);
         }
 
+        public Chance And(Chance other)
+        {
+            return new Chance(possibility * other.possibility);
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != typeof (Chance)) return false;
             var other = (Chance) obj;
-            return other.possibility.Equals(possibility);
+            return other.possibility.Equal(possibility);
         }
 
         public override int GetHashCode()
