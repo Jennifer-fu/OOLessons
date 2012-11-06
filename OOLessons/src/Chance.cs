@@ -19,6 +19,12 @@ namespace OOLessons.test
             return new Chance(possibility * other.possibility);
         }
 
+        public Chance Or(Chance other)
+        {
+            return Not().And(other.Not()).Not();
+            return new Chance(possibility + other.possibility - possibility * other.possibility);
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
