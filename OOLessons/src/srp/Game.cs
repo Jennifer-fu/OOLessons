@@ -2,27 +2,11 @@
 
 namespace OOLessons.test.srp
 {
-    internal class Program
+    public class Game
     {
-        private static void Main(string[] args)
+        public void KnuthShuffle<T>(ref T[] array)
         {
-            int[] nums = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
-            KnuthShuffle<int>(ref nums);
-            int[] chosenNum = new int[4];
-            Array.Copy(nums, chosenNum, 4);
-
-            Console.WriteLine("Your Guess ?");
-            while (!game(Console.ReadLine(), chosenNum))
-            {
-                Console.WriteLine("Your next Guess ?");
-            }
-
-            Console.ReadKey();
-        }
-
-        public static void KnuthShuffle<T>(ref T[] array)
-        {
-            System.Random random = new System.Random();
+            Random random = new Random();
             for (int i = 0; i < array.Length; i++)
             {
                 int j = random.Next(array.Length);
@@ -32,7 +16,7 @@ namespace OOLessons.test.srp
             }
         }
 
-        public static bool game(string guess, int[] num)
+        public bool play(string guess, int[] num)
         {
             char[] guessed = guess.ToCharArray();
             int bullsCount = 0, cowsCount = 0;
@@ -70,11 +54,10 @@ namespace OOLessons.test.srp
                 Console.WriteLine("Congratulations! You have won!");
                 return true;
             }
-            else
-            {
-                Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
-                return false;
-            }
+            Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
+            return false;
         }
     }
+}
+
 }
