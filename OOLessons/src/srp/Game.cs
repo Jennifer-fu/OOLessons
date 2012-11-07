@@ -4,6 +4,16 @@ namespace OOLessons.test.srp
 {
     public class Game
     {
+        private readonly int[] num;
+
+        public Game()
+        {
+            var nums = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+            KnuthShuffle(ref nums);
+            num = new int[4];
+            Array.Copy(nums, num, 4);
+        }
+
         public void KnuthShuffle<T>(ref T[] array)
         {
             Random random = new Random();
@@ -16,8 +26,9 @@ namespace OOLessons.test.srp
             }
         }
 
-        public bool play(string guess, int[] num)
+        public bool Play(string guess)
         {
+            Console.WriteLine(num[0]+""+num[1]+""+num[2]+""+num[3]);
             char[] guessed = guess.ToCharArray();
             int bullsCount = 0, cowsCount = 0;
 
@@ -58,6 +69,4 @@ namespace OOLessons.test.srp
             return false;
         }
     }
-}
-
 }
