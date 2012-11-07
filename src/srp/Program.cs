@@ -1,4 +1,5 @@
 ﻿using System;
+using OOLessons.OOLessons.src.srp;
 
 namespace OOLessons.test.srp
 {
@@ -6,7 +7,7 @@ namespace OOLessons.test.srp
     {
         private static void Main(string[] args)
         {
-            var game = new Game();
+            var game = new Game(new RandomAnswerGenerator());
             
             Console.WriteLine("Your Guess ?");
             while (!game.Play(Console.ReadLine()))

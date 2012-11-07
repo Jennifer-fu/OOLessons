@@ -1,20 +1,20 @@
 ﻿using System;
+using OOLessons.OOLessons.src.srp;
 
 namespace OOLessons.test.srp
 {
     public class Game
     {
-        private readonly int[] num;
+        private readonly int[] answer;
 
-        public Game()
+        public Game(RandomAnswerGenerator randomAnswerGenerator)
         {
             var nums = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
-            KnuthShuffle(ref nums);
-            num = new int[4];
-            Array.Copy(nums, num, 4);
+            answer = randomAnswerGenerator.KnuthShuffle(nums);
+            Array.Copy(nums, answer, 4);
         }
 
-        public void KnuthShuffle<T>(ref T[] array)
+        private void KnuthShuffle<T>(ref T[] array)
         {
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
@@ -28,7 +28,7 @@ namespace OOLessons.test.srp
 
         public bool Play(string guess)
         {
-            Console.WriteLine(num[0]+""+num[1]+""+num[2]+""+num[3]);
+            Console.WriteLine(answer[0]+""+answer[1]+""+answer[2]+""+answer[3]);
             char[] guessed = guess.ToCharArray();
             int bullsCount = 0, cowsCount = 0;
 
@@ -46,7 +46,7 @@ namespace OOLessons.test.srp
                     Console.WriteLine("Digit must be ge greater 0 and lower 10.");
                     return false;
                 }
-                if (curguess == num[i])
+                if (curguess == answer[i])
                 {
                     bullsCount++;
                 }
@@ -54,7 +54,7 @@ namespace OOLessons.test.srp
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (curguess == num[j])
+                        if (curguess == answer[j])
                             cowsCount++;
                     }
                 }

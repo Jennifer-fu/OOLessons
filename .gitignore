@@ -6,3 +6,8 @@ OOLessons/obj/
 OOLessons/bin/
 _Resharper.OOLessons/
 OOLessons.sln.DotSettings.user
+OOLessons.csproj
+OOLessons.csproj.DotSettings
+OOLessons.csproj.user
+bin
+obj
