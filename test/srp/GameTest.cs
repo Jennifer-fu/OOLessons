@@ -13,7 +13,7 @@ namespace OOLessons.srp
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[]{1,2,3,4});
             var game = new Game(mock.Object);
-            Assert.AreEqual("4B0C",game.Play1("1234"));
+            Assert.AreEqual("4B0C",game.Compute("1234"));
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace OOLessons.srp
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
             var game = new Game(mock.Object);
-            Assert.AreEqual("0B0C",game.Play1("5678"));
+            Assert.AreEqual("0B0C",game.Compute("5678"));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace OOLessons.srp
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
             var game = new Game(mock.Object);
-            Assert.AreEqual("1B0C", game.Play1("1678"));
+            Assert.AreEqual("1B0C", game.Compute("1678"));
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace OOLessons.srp
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
             var game = new Game(mock.Object);
-            Assert.AreEqual("1B1C", game.Play1("1628"));
+            Assert.AreEqual("1B1C", game.Compute("1628"));
         }
 
         [Test]
@@ -49,7 +49,27 @@ namespace OOLessons.srp
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
             var game = new Game(mock.Object);
-            Assert.AreEqual("0B4C", game.Play1("3142"));
+            Assert.AreEqual("0B4C", game.Compute("3142"));
+        }
+
+        [Test]
+        [ExpectedException(typeof(DigitNotInvalidNumberException))]
+        public void should_return_throw_exception_if_enter_number_not_between_1_to_9()
+        {
+            var mock = new Mock<RandomAnswerGenerator>();
+            mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
+            var game = new Game(mock.Object);
+            game.Compute("abcd");
+        }
+
+        [Test]
+        [ExpectedException(typeof(InvalidGuessException))]
+        public void should_throw_exception_if_enter_not_4_numbers()
+        {
+            var mock = new Mock<RandomAnswerGenerator>();
+            mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
+            var game = new Game(mock.Object);
+            game.Compute("314");
         }
     }
 }
