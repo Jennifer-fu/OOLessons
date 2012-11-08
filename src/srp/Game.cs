@@ -14,16 +14,27 @@ namespace OOLessons.test.srp
             Array.Copy(nums, answer, 4);
         }
 
-        private void KnuthShuffle<T>(ref T[] array)
+        public string Play1(string guess)
         {
-            Random random = new Random();
-            for (int i = 0; i < array.Length; i++)
+            char[] guessed = guess.ToCharArray();
+            int bullsCount = 0, cowsCount = 0;
+            for (int i = 0; i < 4; i++)
             {
-                int j = random.Next(array.Length);
-                T temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                int curguess = (int)char.GetNumericValue(guessed[i]);
+                if (curguess == answer[i])
+                {
+                    bullsCount++;
+                }
+                else
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (curguess == answer[j])
+                            cowsCount++;
+                    }
+                }
             }
+            return String.Format("{0}B{1}C", bullsCount, cowsCount);
         }
 
         public bool Play(string guess)
