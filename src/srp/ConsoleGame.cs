@@ -1,23 +1,36 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using OOLessons.test.srp;
+using OOLessons.OOLessons.src.srp;
+using OOLessons.srp;
 
-namespace OOLessons.srp
+namespace OOLessons.test.srp
 {
-    public class ConsoleDisplay
+    internal class ConsoleGame
     {
-        private Game game;
+        private Guess guess;
 
-        public ConsoleDisplay(Game game)
+        public ConsoleGame(Guess guess)
         {
-            this.game = game;
+            this.guess = guess;
         }
 
-        public void Play(string guess)
+        public void Start()
+        {
+            Console.WriteLine("Your Guess ?");
+            var result = guess.Do(Console.ReadLine());
+            while (!result.Equals("4B0C"))
+            {
+                ShowSugession(result);
+                Console.WriteLine("Your next Guess ?");
+            }
+
+            Console.ReadKey();
+        }
+
+        public void ShowSugession(string result)
         {
             try
             {
-                var result = game.Compute(guess);
                 if (result.Equals("4B0C"))
                     Console.WriteLine("Congratulations! You have won!");
                 else

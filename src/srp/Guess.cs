@@ -5,18 +5,18 @@ using OOLessons.srp;
 
 namespace OOLessons.test.srp
 {
-    public class Game
+    public class Guess
     {
         private readonly int[] answer;
 
-        public Game(RandomAnswerGenerator randomAnswerGenerator)
+        public Guess(RandomAnswerGenerator randomAnswerGenerator)
         {
             var nums = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
             answer = randomAnswerGenerator.KnuthShuffle(nums);
             Array.Copy(nums, answer, 4);
         }
 
-        public string Compute(string guess)
+        public string Do(string guess)
         {
             char[] guessed = guess.ToCharArray();
             int bullsCount = 0, cowsCount = 0;
@@ -46,7 +46,5 @@ namespace OOLessons.test.srp
             }
             return String.Format("{0}B{1}C", bullsCount, cowsCount);
         }
-
-       
     }
 }
