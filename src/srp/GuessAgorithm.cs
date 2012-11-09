@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using OOLessons.OOLessons.src.srp;
 using OOLessons.srp;
 
 namespace OOLessons.test.srp
 {
-    public class Guess
+    public class GuessAgorithm
     {
         private readonly int[] answer;
 
-        public Guess(RandomAnswerGenerator randomAnswerGenerator)
+        public GuessAgorithm(RandomAnswerGenerator randomAnswerGenerator)
         {
             var nums = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
             answer = randomAnswerGenerator.KnuthShuffle(nums);

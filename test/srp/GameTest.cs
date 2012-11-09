@@ -12,7 +12,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[]{1,2,3,4});
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             Assert.AreEqual("4B0C",game.Do("1234"));
         }
 
@@ -21,7 +21,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             Assert.AreEqual("0B0C",game.Do("5678"));
         }
 
@@ -30,7 +30,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             Assert.AreEqual("1B0C", game.Do("1678"));
         }
 
@@ -39,7 +39,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             Assert.AreEqual("1B1C", game.Do("1628"));
         }
 
@@ -48,7 +48,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             Assert.AreEqual("0B4C", game.Do("3142"));
         }
 
@@ -58,7 +58,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             game.Do("abcd");
         }
 
@@ -68,7 +68,7 @@ namespace OOLessons.srp
         {
             var mock = new Mock<RandomAnswerGenerator>();
             mock.Setup(m => m.KnuthShuffle(It.IsAny<int[]>())).Returns(new[] { 1, 2, 3, 4 });
-            var game = new Guess(mock.Object);
+            var game = new GuessAgorithm(mock.Object);
             game.Do("314");
         }
     }
