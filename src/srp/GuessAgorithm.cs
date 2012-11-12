@@ -17,24 +17,20 @@ namespace OOLessons.test.srp
 
         public string Do(string guess)
         {
+            Validate(guess);
+            var bullsCount = ComputeBullsCount(guess);
+            var cowsCount = ComputeCowsCount(guess);
+            return String.Format("{0}B{1}C", bullsCount, cowsCount);
+        }
+
+        private int ComputeCowsCount(string guess)
+        {
             char[] guessed = guess.ToCharArray();
-            int bullsCount = 0, cowsCount = 0;
-            if (guessed.Length != 4)
-            {
-                throw new InvalidGuessException();
-            }
+            int cowsCount = 0;
             for (int i = 0; i < 4; i++)
             {
                 int curguess = (int) char.GetNumericValue(guessed[i]);
-                if (curguess < 1 || curguess > 9)
-                {
-                    throw new DigitNotInvalidNumberException();
-                }
-                if (curguess == answer[i])
-                {
-                    bullsCount++;
-                }
-                else
+                if (curguess != answer[i])
                 {
                     for (int j = 0; j < 4; j++)
                     {
@@ -43,7 +39,40 @@ namespace OOLessons.test.srp
                     }
                 }
             }
-            return String.Format("{0}B{1}C", bullsCount, cowsCount);
+            return cowsCount;
+        }
+
+        private int ComputeBullsCount(string guess)
+        {
+            char[] guessed = guess.ToCharArray();
+            int bullsCount = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                int curguess = (int) char.GetNumericValue(guessed[i]);
+                if (curguess == answer[i])
+                {
+                    bullsCount++;
+                }
+            }
+            return bullsCount;
+        }
+
+        private void Validate(string guess)
+        {
+            char[] guessed = guess.ToCharArray();
+            if (guessed.Length != 4)
+            {
+                throw new InvalidGuessException();
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                int curguess = (int) char.GetNumericValue(guessed[i]);
+                if (curguess < 1 || curguess > 9)
+                {
+                    throw new DigitNotInvalidNumberException();
+                }
+            }
         }
     }
 }

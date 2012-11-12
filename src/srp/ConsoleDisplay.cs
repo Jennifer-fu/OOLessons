@@ -14,7 +14,6 @@ namespace OOLessons.test.srp
 
         public string GuessInput()
         {
-            //Console.ReadKey();
             return Console.ReadLine();
         }
 
